@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.woc.mapper.AdminMapper">
+    <select id="findByName" parameterType="string" resultType="com.example.woc.entity.User">
+        SELECT * FROM `user` WHERE user_name=#{userName};
+    </select>
+    <delete id="delUser" parameterType="string">
+        DELETE FROM `user` WHERE user_name=#{userName};
+    </delete>
+    <select id="findAll" resultType="com.example.woc.entity.User">
+        SELECT * FROM `user` LIMIT #{pageSize} OFFSET #{pageNum};
+    </select>
+</mapper>

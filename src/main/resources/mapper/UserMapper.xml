@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.woc.mapper.UserMapper">
+    <insert id="addUser" parameterType="com.example.woc.entity.User">
+        INSERT INTO `user`(`user_name`, `password`, `email`, `role`)
+        VALUES (#{userName}, #{password}, #{email}, 0);
+    </insert>
+    <select id="findByName" parameterType="string" resultType="com.example.woc.entity.User">
+        SELECT * FROM `user` WHERE user_name=#{userName};
+    </select>
+    <select id="findById" parameterType="integer" resultType="com.example.woc.entity.User">
+        SELECT * FROM `user` WHERE id=#{id};
+    </select>
+    <delete id="delUser" parameterType="string">
+        DELETE FROM `user` WHERE user_name=#{userName};
+    </delete>
+    <update id="editUserInfo" parameterType="com.example.woc.entity.User">
+        UPDATE `user`
+        SET user_name= #{userName},
+            email= #{email},
+            `password`= #{password}
+        WHERE id = #{id};
+    </update>
+</mapper>
